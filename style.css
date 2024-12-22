@@ -1,0 +1,181 @@
+/* Body and overall layout */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #add8e6, #90ee90, #ffb6c1); /* Updated background gradient */
+    position: relative;
+    overflow: hidden;
+    animation: changeBackground 10s infinite alternate; /* Background color change animation */
+}
+
+/* Background color change animation */
+@keyframes changeBackground {
+    0% {
+        background: #add8e6; /* Light Blue */
+    }
+    50% {
+        background: #90ee90; /* Light Green */
+    }
+    100% {
+        background: #ffb6c1; /* Light Pink */
+    }
+}
+
+/* Container for notes */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    max-height: 80vh;  /* Limit container height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    overflow-y: auto; /* Allow scrolling if there are too many notes */
+}
+
+/* Header */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Textarea style */
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+}
+
+/* Button style */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: sticky;  /* Keep button at the bottom */
+    bottom: 20px;
+    z-index: 2;  /* Ensure button stays above other elements */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Note container */
+#note-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Individual note style */
+.note {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 350px;
+    text-align: left;
+    font-size: 24px; /* Larger font size for note text */
+    color: #333;
+}
+
+/* Style for the text inside the note */
+.note-text {
+    word-wrap: break-word;
+}
+
+/* Delete button style */
+.delete-btn {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #f44336;
+}
+
+/* Falling objects animation */
+@keyframes fall {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 100vh;
+    }
+}
+
+/* Falling objects */
+.page, .pen, .feather {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+/* Different colors for each object */
+.page {
+    background-color: black;  /* Black */
+}
+
+.pen {
+    background-color: white;  /* White */
+}
+
+.feather {
+    background-color: turquoise;  /* Turquoise */
+}
+
+/* Adjust animation speed and randomness */
+.page:nth-child(odd) {
+    animation-duration: 6s;
+    left: calc(100% * var(--randX));  /* Random X position */
+    animation-delay: 2s;
+}
+
+.pen:nth-child(2n) {
+    animation-duration: 5s;
+    left: calc(100% * var(--randX));  /* Random X position */
+    animation-delay: 1s;
+}
+
+.feather:nth-child(3n) {
+    animation-duration: 4s;
+    left: calc(100% * var(--randX));  /* Random X position */
+    animation-delay: 3s;
+}
+
+/* Ensure falling objects are distributed across the entire page */
+body {
+    --randX: random(); /* Custom property to calculate random left position */
+}
