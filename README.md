@@ -6,7 +6,7 @@ A simple Notes application that allows users to create, view, and delete notes. 
 
 - **Add Notes**: Users can add notes through a text area.
 - **Delete Notes**: Notes can be deleted by clicking the delete button next to each note.
-- **Animations**: Includes falling objects (page, pen, feather) with various colors for a dynamic effect.
+- **Animations**: Includes falling objects with various colors for a dynamic effect.
 - **Responsive Design**: The layout is designed to be responsive and adapts to various screen sizes.
 - **Persistent Notes**: Notes are stored temporarily in memory, but can be saved to a JSON file on the backend.
 
